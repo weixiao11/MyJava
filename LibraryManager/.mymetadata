@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project-module
+  type="WEB"
+  name="LibraryManager"
+  id="myeclipse.1450744442885"
+  context-root="/LibraryManager"
+  j2ee-spec="5.0"
+  archive="LibraryManager.war">
+  <attributes>
+    <attribute name="webrootdir" value="WebRoot" />
+  </attributes>
+</project-module>
+

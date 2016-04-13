@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<web-app version="2.5" xmlns="http://java.sun.com/xml/ns/javaee"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://java.sun.com/xml/ns/javaee 
+	http://java.sun.com/xml/ns/javaee/web-app_2_5.xsd">
+	<display-name></display-name>
+	<!--管理员的服务器 -->
+	<servlet>
+		<description>This is the description of my J2EE component</description>
+		<display-name>This is the display name of my J2EE component</display-name>
+		<servlet-name>ManagerServlet</servlet-name>
+		<servlet-class>servlet.ManagerServlet</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>ManagerServlet</servlet-name>
+		<url-pattern>/ManagerServlet</url-pattern>
+	</servlet-mapping>
+
+	<!--图书的服务器 -->
+	<servlet>
+		<description>This is the description of my J2EE component</description>
+		<display-name>This is the display name of my J2EE component</display-name>
+		<servlet-name>BooksServlet</servlet-name>
+		<servlet-class>servlet.BooksServlet</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>BooksServlet</servlet-name>
+		<url-pattern>/BooksServlet</url-pattern>
+	</servlet-mapping>
+
+	<!--代码格式过滤器 -->
+	<filter>
+		<filter-name>encodeFilter</filter-name>
+		<filter-class>filter.EncondFilter</filter-class>
+		<init-param>
+			<param-name>encode</param-name>
+			<param-value>UTF-8</param-value>
+		</init-param>
+		<init-param>
+			<param-name>ignore</param-name>
+			<param-value>true</param-value>
+		</init-param>
+	</filter>
+	<filter-mapping>
+		<filter-name>encodeFilter</filter-name>
+		<url-pattern>/*</url-pattern>
+	</filter-mapping>
+
+	<!--登录过滤器 -->
+	<filter>
+		<filter-name>LoginFilter</filter-name>
+		<filter-class>filter.LoginFilter</filter-class>
+        
+        <init-param>
+        <param-name>permitUrl</param-name>
+        <param-value>/,/login.jsp,/ManagerServlet?action=login,/css/style.css,/images/avtar.png,/images/bg1.jpg</param-value>
+        </init-param>
+        
+        <init-param>
+        <param-name>ignore</param-name>
+        <param-value>false</param-value>
+        </init-param>
+        
+        <init-param>
+        <param-name>gotoUrl</param-name>
+        <param-value>/login.jsp</param-value>
+        </init-param>
+	</filter>
+	<filter-mapping>
+		<filter-name>LoginFilter</filter-name>
+		<url-pattern>/*</url-pattern>
+	</filter-mapping>
+	<!--默认的页面 -->
+	<welcome-file-list>
+		<welcome-file>login.jsp</welcome-file>
+	</welcome-file-list>
+</web-app>
